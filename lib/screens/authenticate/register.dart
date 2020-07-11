@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:madhav_auth/services/auth.dart';
 
 class Register extends StatefulWidget {
+  final Function toggleView;
+  Register({this.toggleView});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -21,6 +24,18 @@ class _RegisterState extends State<Register> {
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
         title: Text('Sign up to Madhav Auth'),
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person, color: Colors.white),
+            label: Text(
+              'Sign in',
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              widget.toggleView();
+            },
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
