@@ -1,6 +1,6 @@
 # madhav_auth
 
-A new Flutter project.
+Auhentication with flutter and firebase.
 
 ## Getting Started
 
