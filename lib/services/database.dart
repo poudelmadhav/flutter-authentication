@@ -36,7 +36,7 @@ class DatabaseService {
       name: snapshot.data['name'],
       sugars: snapshot.data['sugars'],
       strength: snapshot.data['strength'],
-    )
+    );
   }
 
   // get brews stream
