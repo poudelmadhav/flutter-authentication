@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:madhav_auth/models/user.dart';
 import 'package:madhav_auth/services/auth.dart';
 import 'package:madhav_auth/shared/constants.dart';
 import 'package:madhav_auth/shared/loading.dart';
@@ -61,7 +62,6 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                     SizedBox(height: 20.0),
-                    SizedBox(height: 20.0),
                     TextFormField(
                       decoration:
                           textInputDecoration.copyWith(hintText: 'Email'),
@@ -96,10 +96,10 @@ class _RegisterState extends State<Register> {
                               await _auth.registerWithEmailAndPassword(
                                   name, email, password);
                           print(result);
-                          if (result == null) {
+                          if (!(result is User)) {
                             setState(() {
                               loading = false;
-                              error = 'please supply a valid email';
+                              error = result;
                             });
                           }
                         }

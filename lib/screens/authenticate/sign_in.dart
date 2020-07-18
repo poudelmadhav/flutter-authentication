@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:madhav_auth/models/user.dart';
 import 'package:madhav_auth/services/auth.dart';
 import 'package:madhav_auth/shared/constants.dart';
 import 'package:madhav_auth/shared/loading.dart';
@@ -84,10 +85,10 @@ class _SignInState extends State<SignIn> {
                           dynamic result = await _auth
                               .signInWithEmailAndPassword(email, password);
                           print(result);
-                          if (result == null) {
+                          if (!(result is User)) {
                             setState(() {
                               loading = false;
-                              error = "Couldn't sign in with those credentials";
+                              error = result;
                             });
                           }
                         }
