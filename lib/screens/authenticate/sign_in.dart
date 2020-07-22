@@ -95,6 +95,40 @@ class _SignInState extends State<SignIn> {
                       },
                     ),
                     SizedBox(height: 20.0),
+                    Center(
+                      child: Text(
+                        'OR',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    RaisedButton(
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset('assets/google_logo.png', height: 20.0),
+                          SizedBox(width: 10.0),
+                          Text(
+                            'Sign in with Google',
+                            style: TextStyle(color: Colors.black87),
+                          ),
+                        ],
+                      ),
+                      onPressed: () async {
+                        setState(() => loading = true);
+                        dynamic result = await _auth.signInWithGoogle();
+                        print(result);
+                        if (!(result is User)) {
+                          setState(() {
+                            loading = false;
+                            error = 'There is a problem signing in';
+                          });
+                        }
+                      },
+                    ),
+                    SizedBox(height: 20.0),
                     Text(
                       error,
                       style: TextStyle(
